@@ -3,7 +3,7 @@
 setup() {
     LD_LIBRARY_PATH=/usr/local/lib:/usr/lib
     PATH=/opt/ruby/current/bin:/opt/ruby/bin:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-    APP_DIR=/var/www/rails/classify
+    APP_DIR=/var/www/rails/depression
 }
 
 update() {
