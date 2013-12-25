@@ -133,7 +133,7 @@ class StoriesController < ApplicationController
       @story.classify = @story.total_score > -0.20 ? '普通のツイート' : '鬱ツイート'
       @story.scores = JSON.generate(@scores)
     else
-      @story.total_score = 0
+      @story.total_score = 0.0
       @story.classify = '判定不能'
       @story.scores = 'ツイートが短すぎて判定できません。もうすこし語彙を増やしてください。'
     end
