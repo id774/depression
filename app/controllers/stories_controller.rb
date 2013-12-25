@@ -95,7 +95,7 @@ class StoriesController < ApplicationController
   end
 
   def index
-    @stories = Story.page(params[:page]).order(id: :desc)
+    @stories = Story.where(classify: '鬱ツイート').page(params[:page]).order(id: :desc)
 
     respond_to do |format|
       format.html
