@@ -1,0 +1,21 @@
+!!!
+%html
+  %head
+    %meta{"http-equiv"=>"Content-Type", :content=>"text/html; charset=utf-8"}/
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    = stylesheet_link_tag "application"
+    = javascript_include_tag "application"
+    = csrf_meta_tag
+    %title
+      鬱ツイート判定器
+    = yield(:head)
+
+  %body(class='#{controller_name}-#{action_name}-page' data-spy="scroll" data-target=".subnav" data-offset="50")
+    %section{:id => "topbar"}
+      = render :template => 'layouts/_topbar'
+    %section{:id => "main"}
+      = render :template => 'homes/_portal'
+    %section{:id => "footer"}
+      = render :template => 'layouts/_footer'

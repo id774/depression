@@ -1,0 +1,24 @@
+.span6
+  %table{:class => 'table table-bordered table-striped'}
+    %thead
+      %tr
+        %th{:style => "width: 150px;"} 項目
+        %th 内容
+    %tbody
+      %tr
+        %td テキスト
+        %td= session[:text]
+      %tr
+        %td 分類
+        %td= session[:classify]
+      %tr
+        %td トータルスコア
+        %td= session[:total_score]
+      %tr
+        %td 語彙
+        %td= session[:scores]
+
+  %p{:class=>"pull-left pager"}
+    = link_to "実装の説明", "http://blog.id774.net/post/2013/07/31/390/"
+  %p{:class=>"pull-right pager"}
+    = link_to "テキスト一覧を見る", stories_path

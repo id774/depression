@@ -1,0 +1,24 @@
+%table{:class => 'table table-bordered table-striped'}
+  %thead
+    %tr
+      %th{:style => "width: 150px;"} 項目
+      %th 内容
+  %tbody
+    %tr
+      %td ID
+      %td= @story.id
+    %tr
+      %td 作成日時
+      %td= @story.created_at.strftime "%Y/%m/%d %X"
+    %tr
+      %td テキスト
+      %td= @story.text
+    %tr
+      %td 分類
+      %td= @story.classify
+    %tr
+      %td トータルスコア
+      %td= @story.total_score
+    %tr
+      %td 語彙
+      %td= @story.scores

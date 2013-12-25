@@ -1,0 +1,25 @@
+#!/bin/sh
+
+setup() {
+    LD_LIBRARY_PATH=/usr/local/lib:/usr/lib
+    PATH=/opt/ruby/current/bin:/opt/ruby/bin:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+    APP_DIR=/var/www/rails/classify
+}
+
+update() {
+    cd $APP_DIR
+    git pull
+    bundle exec rake assets:precompile RAILS_ENV=production
+    # bundle exec rake db:migrate RAILS_ENV=production
+    rm -rf tmp/*
+    chown -R www-data:www-data . && sudo chmod -R g+w,o-rwx .
+}
+
+main() {
+    setup
+    update
+    service apache2 restart
+}
+
+main
+exit 0

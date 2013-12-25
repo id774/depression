@@ -1,0 +1,22 @@
+= form_for @story do |f|
+  -if @story.errors.any?
+    .alert.alert-message.block-message.error
+      %h3= "#{@story.errors.count} 件のエラーが発生したため、処理できませんでした。"
+      %ul
+        - @story.errors.full_messages.each do |msg|
+          %li= msg
+
+  .fieldset
+    .story
+      .row
+        .span4.offset1
+          %label 鬱ツイート判定をするテキストを入力するか貼り付けてください
+          .input
+            = f.text_area :text, :rows => 15
+
+            .form-actions
+              .input
+                = f.submit '送信する', :class => 'btn btn-primary'
+
+        = render 'description'
+
