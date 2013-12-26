@@ -10,7 +10,7 @@ class SingletonClass
 
   def initialize
     @fluentd = Fluent::Logger::FluentLogger.open('depression',
-      host = 'localhost', port = 9999)
+      host = 'localhost', port = 10000)
 
     @mecab = MeCab::Tagger.new("-Ochasen")
 
