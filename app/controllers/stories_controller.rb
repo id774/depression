@@ -146,7 +146,7 @@ class StoriesController < ApplicationController
     else
       @story.total_score = 0.0
       @story.classify = '判定不能'
-      @story.scores = 'ツイートが短すぎて判定できません。もうすこし語彙を増やしてください。'
+      @story.scores = '語彙が少なすぎて判定できません。もう少し語彙を増やしてください。'
     end
   end
 
