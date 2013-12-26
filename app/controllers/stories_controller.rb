@@ -5,18 +5,37 @@ require 'fluent-logger'
 require 'json'
 require 'singleton'
 
-class SingletonClass
+class SingletonFluentd
   include Singleton
 
   def initialize
     @fluentd = Fluent::Logger::FluentLogger.open('depression',
       host = 'localhost', port = 10000)
+  end
 
+  def fluentd
+    @fluentd
+  end
+end
+
+class SingletonMecab
+  include Singleton
+
+  def initialize
     @mecab = MeCab::Tagger.new("-Ochasen")
+  end
 
+  def mecab
+    @mecab
+  end
+end
+
+class SingletonDic
+  include Singleton
+
+  def initialize
     dic_file = File.join(File.dirname(__FILE__), '..', '..', 'pn_ja.dic')
     @dic = Array.new
-
     open(dic_file) do |file|
       file.each_line do |line|
         @dic << line.force_encoding("utf-8").chomp.split(':')
@@ -26,14 +45,6 @@ class SingletonClass
 
   def dic
     @dic
-  end
-
-  def fluentd
-    @fluentd
-  end
-
-  def mecab
-    @mecab
   end
 end
 
@@ -57,9 +68,9 @@ class StoriesController < ApplicationController
   end
 
   def create
-    @mecab   = SingletonClass.instance.mecab
-    @fluentd = SingletonClass.instance.fluentd
-    @dic     = SingletonClass.instance.dic
+    @mecab   = SingletonMecab.instance.mecab
+    @fluentd = SingletonFluentd.instance.fluentd
+    @dic     = SingletonDic.instance.dic
 
     @story = Story.new(story_params)
     @story.text = params[:story][:text].truncate_screen_width(1000, suffix = "")
