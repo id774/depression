@@ -69,7 +69,6 @@ class StoriesController < ApplicationController
 
   def create
     @mecab   = SingletonMecab.instance.mecab
-    @fluentd = SingletonFluentd.instance.fluentd
     @dic     = SingletonDic.instance.dic
 
     @story = Story.new(story_params)
@@ -86,12 +85,15 @@ class StoriesController < ApplicationController
       session[:total_score]   = @story.total_score
       session[:scores]        = @story.scores.truncate_screen_width(500, suffix = "...")
 
-      @fluentd.post('record', {
-        :text          => @story.text,
-        :classify      => @story.classify,
-        :total_score   => @story.total_score,
-        :scores        => @story.scores
-      })
+      if Rails.env.production?
+        @fluentd = SingletonFluentd.instance.fluentd
+        @fluentd.post('record', {
+          :text          => @story.text,
+          :classify      => @story.classify,
+          :total_score   => @story.total_score,
+          :scores        => @story.scores
+        })
+      end
 
       if @story.save
         notice = "#{result}"
