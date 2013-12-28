@@ -10,7 +10,7 @@ class SingletonFluentd
 
   def initialize
     @fluentd = Fluent::Logger::FluentLogger.open('depression',
-      host = 'localhost', port = 10000)
+      host = 'localhost', port = 9999)
   end
 
   def fluentd
