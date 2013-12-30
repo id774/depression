@@ -109,6 +109,9 @@ class StoriesController < ApplicationController
 
   def index
     @stories = Story.where(classify: '鬱ツイート').page(params[:page]).order(id: :desc)
+    @all = Story.count
+    @depressions = @stories.length
+    @depression_rate = @depressions / @all.to_f * 100
 
     respond_to do |format|
       format.html
