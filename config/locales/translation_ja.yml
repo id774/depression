@@ -7,16 +7,11 @@ ja:
       last: "最後"
       truncate: ""
 
-    content:
-      name: "名前"  #g
-      body: "内容"  #g
-
   activerecord:
-    models:
-      name: "名前"  #g
-      body: "内容"  #g
-
     attributes:
       story:
-        name: "名前"  #g
-        body: "内容"  #g
+        text: "テキスト" #g
+        classify: "分類" #g
+        total_score: "トータルスコア" #g
+        stories: "語彙" #g
+
