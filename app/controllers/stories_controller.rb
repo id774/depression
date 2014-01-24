@@ -130,11 +130,6 @@ class StoriesController < ApplicationController
     params.require(:story).permit(:text)
   end
 
-  def puts_with_time(message)
-    fmt = "%Y/%m/%d %X"
-    puts "#{Time.now.strftime(fmt)}: #{message.force_encoding("utf-8")}"
-  end
-
   def depression
     score = 0.0
     word_count = 0
