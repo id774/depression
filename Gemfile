@@ -1,8 +1,8 @@
-# Version:20131225
+# Version:20160416
 
 source 'https://rubygems.org'
 
-gem 'rails', '~> 4.0.2'
+gem 'rails', '~> 4.2.6'
 gem 'sqlite3'
 gem 'sass-rails', '~> 4'
 gem 'uglifier', '~> 1.3'
@@ -13,7 +13,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'haml-rails'
-#gem "compass-rails", "~> 2.0.alpha.0"
+# gem "compass-rails", "~> 2.0.alpha.0"
 gem 'i18n_generators'
 gem 'fluent-logger'
 
